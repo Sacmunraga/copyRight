@@ -1,0 +1,527 @@
+# This is a comment
+# A comment starts with a '#'
+# Question syntax:
+# 'Q' stands for question, it is the question title
+# 'B' stands for back button. All questions except for the very first one have a back button
+# 'A' stands for answer. This is a possible answer to the question.
+# 'N' stands for next question, and it MUST follow the answer above it, or there will be a mismatch
+# with answers and their corresponding next questions
+# 'S' stands for score. This is the score associated with the answer. If there is no score to be added,
+# simply set it to zero
+# 'T' stands for terminate, and it marks the end of the question, and the start of a new one.
+# 'C' stands for Special Case, which marks questions which require extra info/work to be calculated.
+# Set C to zero for no special action, and any UNIQUE integer for a special case. Special Case numbers
+# Must be accounted for in the switch statement in the copyRight GUI code!!
+
+# Sample question, score, special case, and back button are arbitrary.
+# Q: How old are you
+# B: true
+# C: 0
+
+# A: 14
+# N: Do you actually think we'll sell you cigarettes?
+# S: 20
+
+# A: 18
+# N: Are you stupid, you can have cigarettes but don't you realize you have to wait couple more years
+# to buy beer?
+# S: 40
+
+# A: 25
+# N: Do you want a a 12 pack as well?
+# S: 30
+#T
+####################################################################################################
+# Main question
+Q: What do you want to do?
+B: false
+C: 0
+
+A: Copy and distribute a published work.
+N: What is the purpose of the copy?
+S: -1
+
+A: Use a picture in a slideshow.
+N: Does the picture have a Creative Commons license?
+S: -1
+
+A: Use a video clip.
+N: Are you using the film or video in a physical classroom during your regular teaching time?
+S: -1
+T
+
+######################################
+Q: Does the picture have a Creative Commons license?
+B: true
+C: 0
+
+A: Yes
+N: Follow the license instructions given here: https://creativecommons.org/licenses/
+S: -1
+
+A: No
+N: What is the purpose of the picture?
+S: -1
+
+A: I don't know
+N: Since you are unsure, we'll see if use of the item falls within fair use.
+S: -1
+T
+
+#######################################
+Q: Follow the license instructions given here: https://creativecommons.org/licenses/
+B: true
+C: 3
+
+A: Open instructions
+N: ""
+S: -1
+T
+#######################################
+Q: Since you are unsure, we'll see if use of the item falls within fair use.
+B: true
+C: 0
+
+A: continue
+N: What is the purpose of the picture?
+S: -1
+T
+#######################################
+Q: What is the purpose of the picture?
+B: true
+C: 0
+
+A: Teaching (classroom use)
+N: Nature of the picture: Is it published?
+S: 25
+
+A: Criticism
+N: Nature of the picture: Is it published?
+S: 25
+
+A: Comment
+N: Nature of the picture: Is it published?
+S: 25
+
+A: News Reporting
+N: Nature of the picture: Is it published?
+S: 25
+
+A: Scholarship/Research
+N: Nature of the picture: Is it published?
+S: 25
+
+A: Publication
+N: Nature of the picture: Is it published?
+S: 0
+
+A: Posting to social media
+N: Nature of the picture: Is it published?
+S: 0
+
+A: Other
+N: Nature of the picture: Is it published?
+S: 0
+T
+
+##########################################
+Q: Nature of the picture: Is it published?
+B: true
+C: 0
+
+A: Yes
+N: What portion of the image is being used?
+S: 5
+
+A: No
+N: What portion of the image is being used?
+S: 0
+T
+
+###########################################
+Q: What portion of the image is being used?
+B: true
+C: 0
+
+A: The whole image
+N: Will the photo be used in a commercial venture (i.e. for profit)?
+S: 0
+
+A: A small part of a larger image
+N: Will the photo be used in a commercial venture (i.e. for profit)?
+S: 15
+
+A: A thumbnail with a link to the larger image.
+N: Will the photo be used in a commercial venture (i.e. for profit)?
+S: 30
+T
+
+###########################################
+Q: Will the photo be used in a commercial venture (i.e. for profit)?
+B: true
+C: 0
+
+A: Yes
+N: Is it possible to obtain permission?
+S: -1
+
+A: No
+N: Is it possible to obtain permission?
+S: -1
+T
+
+###########################################
+Q: Is it possible to obtain permission?
+B: true
+C: 1
+
+A: Yes
+N: Final Determination
+S: -1
+
+A: No
+N: Final Determination
+S: -1
+T
+
+
+############################# Published Work Questions ####################################
+##############################################
+Q: What is the purpose of the copy?
+B: true
+C: 0
+
+A: Teaching
+N: What is the nature of the work?
+S: 25
+
+A: Criticism
+N: What is the nature of the work?
+S: 25
+
+A: Comment
+N: What is the nature of the work?
+S: 25
+
+A: News Reporting
+N: What is the nature of the work?
+S: 25
+
+A: Scholarship/Research
+N: What is the nature of the work?
+S: 25
+
+A: Publication
+N: You must obtain rights from the copyright holders
+S: 0
+
+A: Other
+N: You must obtain rights from the copyright holders
+S: 0
+T
+
+##############################################
+Q: You must obtain rights from the copyright holders
+B: true
+C: 0
+T
+
+##############################################
+Q: What is the nature of the work?
+B: true
+C: 0
+
+A: Factual
+N: What portion of the work is copied?
+S: 5
+
+A: Informational
+N: What portion of the work is copied?
+S: 5
+
+A: Author's opinion/evaluation
+N: What portion of the work is copied?
+S: 0
+
+A: Author's subjective description
+N: What portion of the work is copied?
+S: 0
+
+A: Author's analysis
+N: What portion of the work is copied?
+S: 0
+T
+
+##############################################
+Q: What portion of the work is copied?
+B: true
+C: 0
+
+A: >= 10% of the work?
+N: Is there a means available to obtain permissions?
+S: -1
+
+A: < 10% of the work
+N: Is excerpted copy a full chapter or more?
+S: -1
+T
+
+##############################################
+Q: Is excerpted copy a full chapter or more?
+B: true
+C: 0
+
+A: Yes
+N: Is there a means available to obtain permissions?
+S: 0
+
+A: No
+N: Is excerpted copy the heart of the work?
+S: -1
+T
+
+##############################################
+Q: Is excerpted copy the heart of the work?
+B: true
+C: 0
+
+A: Yes
+N: Is there a means available to obtain permissions?
+S: 0
+
+
+A: No
+N: Is there a means available to obtain permissions?
+S: 30
+T
+
+##############################################
+Q: Is there a means available to obtain permissions?
+B: true
+C: 0
+
+A: Yes
+N: Would there be substantial damage to market if everyone copied/used excerpt?
+S: -1
+
+A: No
+N: Final Determination
+S: 40
+T
+
+##############################################
+Q: Would there be substantial damage to market if everyone copied/used excerpt?
+B: true
+C: 0
+
+A: Yes
+N: Are permissions fees (per student/per page) unreasonably "excessive" in larger classes?
+S: -1
+
+A: No
+N: Final Determination
+S: 40
+T
+
+##############################################
+Q: Are permissions fees (per student/per page) unreasonably "excessive" in larger classes?
+B: true
+C: 0
+
+A: Yes
+N: Final Determination
+S: 40
+
+A: No
+N: Final Determination
+S: 0
+T
+
+############################# Video Questions ####################################
+##############################################
+Q: Are you using the film or video in a physical classroom during your regular teaching time?
+B: true
+C: 0
+
+A: Yes
+N: As long as you are using a legally obtained copy of the film, or video, you are within fair use.
+S: -1
+
+A: No
+N: Are you using the fim or video in an online educational setting?
+S: -1
+T
+
+##############################################
+Q: Are you using the fim or video in an online educational setting?
+B: true
+C: 0
+
+A: Yes
+N: Will the video only be accessible to only students enrolled in your class through Blackboard or Canvas?
+S: -1
+
+A: No
+N: Please Consult additional resources regarding the potential use of the video.
+S: -1
+T
+
+##############################################
+Q: As long as you are using a legally obtained copy of the film, or video, you are within fair use.
+B: true
+C: 0
+T
+
+##############################################
+Q: Please Consult additional resources regarding the potential use of the video.
+B: true
+C: 0
+T
+
+##############################################
+Q: Will the video only be accessible to only students enrolled in your class through Blackboard or Canvas?
+B: true
+C: 0
+
+A: Yes
+N: What is the purpose of the video or video clip?
+S: -1
+
+A: No
+N: Please consult the TEACH Act regarding the potential use of the video.
+S: -1
+T
+
+##############################################
+Q: Please consult the TEACH Act regarding the potential use of the video.
+B: true
+C: 0
+T
+
+
+##############################################
+Q: What is the purpose of the video or video clip?
+B: true
+C: 0
+
+A: Teaching
+N: Nature of the film: Is it published?
+S: 25
+
+A: Criticism
+N: Nature of the film: Is it published?
+S: 25
+
+A: Comment
+N: Nature of the film: Is it published?
+S: 25
+
+A: News Reporting
+N: Nature of the film: Is it published?
+S: 25
+
+A: Scholarship/Research
+N: Nature of the film: Is it published?
+S: 25
+
+A: Publication
+N: Nature of the film: Is it published?
+S: 0
+
+A: Posting to social media
+N: Nature of the film: Is it published?
+S: 0
+
+A: Other
+N: Nature of the film: Is it published?
+S: 0
+T
+
+##############################################
+Q: Nature of the film: Is it published?
+B: true
+C: 0
+
+A: Yes
+N: What portion of the video is being used?
+S: 5
+
+A: No
+N: What portion of the video is being used?
+S: 0
+T
+
+##############################################
+Q: What portion of the video is being used?
+B: true
+C: 0
+
+A: The whole video
+N: Will the use of this video harm the market for the film (i.e. is this content that the students would reasonably be expected to purchase?)
+S: 0
+
+A: A sizable portion greater than 5%, but necessary for education purposes
+N: Will the use of this video harm the market for the film (i.e. is this content that the students would reasonably be expected to purchase?)
+S: 15
+
+A: A small clip less than 5% and not the heart of the work
+N: Will the use of this video harm the market for the film (i.e. is this content that the students would reasonably be expected to purchase?)
+S: 30
+T
+
+##############################################
+Q: Will the use of this video harm the market for the film (i.e. is this content that the students would reasonably be expected to purchase?)
+B: true
+C: 0
+
+A: Yes
+N: Is the use of this film transformative (i.e. was it originally published for entertainment purposes?)
+S: -1
+
+A: No
+N: Is the use of this film transformative (i.e. was it originally published for entertainment purposes?)
+S: -1
+T
+
+##############################################
+Q: Is the use of this film transformative (i.e. was it originally published for entertainment purposes?)
+B: true
+C: 2
+
+A: Yes
+N: Final Determination
+S: 1
+
+A: No
+N: Final Determination
+S: 1
+T
+##############################################
+Q: Is gaining permission to use the film available?
+B: true
+C: 5
+
+A: Yes
+N: Final Determination
+S: 20
+
+A: No
+N: Final Determination
+S: 40
+T
+##############################################
+Q: Final Determination
+B: true
+C: 4
+
+A: We're done.
+N: ""
+S: -1
+T
+
+######################
+
+
+
+
+
